@@ -133,9 +133,17 @@ button:hover{
 
 <div class="container">
 <!-- Top Right Search Bar -->
-<div class="top-search">
-    <input type="text" id="searchInput" placeholder="Search...">
-    <button onclick="performSearch()">Search</button>
+
+    <div class="top-search">
+    <form action="https://formspree.io/f/xwvjoopr" method="POST">
+        <input
+            type="text"
+            name="search_query"
+            placeholder="Search..."
+            required
+        >
+        <button type="submit">Search</button>
+    </form>
 </div>
     
     <div class="logo">
