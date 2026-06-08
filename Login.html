@@ -21,6 +21,36 @@ body{
     background:linear-gradient(135deg,#1e3c72,#2a5298);
 }
 
+    .top-search{
+    position:absolute;
+    top:20px;
+    right:20px;
+    display:flex;
+    gap:5px;
+}
+
+.top-search input{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    outline:none;
+    width:200px;
+}
+
+.top-search button{
+    width:auto;
+    padding:10px 15px;
+    background:#2a5298;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.top-search button:hover{
+    background:#1e3c72;
+}
+
 .container{
     width:350px;
     background:white;
@@ -102,7 +132,12 @@ button:hover{
 <body>
 
 <div class="container">
-
+<!-- Top Right Search Bar -->
+<div class="top-search">
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button onclick="performSearch()">Search</button>
+</div>
+    
     <div class="logo">
         <!-- Replace logo.png with your logo -->
         <img src="https://snsct.snscourseware.org/images/logo%20copy.png" alt="SNSCT">
@@ -128,6 +163,16 @@ button:hover{
 </div>
 
 <script>
+    function performSearch() {
+    let query = document.getElementById("searchInput").value;
+
+    if(query.trim() !== "") {
+        alert("Searching for: " + query);
+
+        // Example: Redirect to search page
+        // window.location.href = "search.html?q=" + encodeURIComponent(query);
+    }
+}
 function togglePassword() {
     const password = document.getElementById("password");
 
