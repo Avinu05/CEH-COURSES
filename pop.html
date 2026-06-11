@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+}
+
+.container{
+    width:350px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.logo img{
+    width:100px;
+    height:100px;
+    object-fit:contain;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+}
+
+.input-box{
+    margin-bottom:15px;
+}
+
+.input-box input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    outline:none;
+}
+
+.input-box input:focus{
+    border-color:#2a5298;
+}
+
+.password-container{
+    position:relative;
+}
+
+.toggle-password{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#555;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#2a5298;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#1e3c72;
+}
+
+.message{
+    margin-top:15px;
+    text-align:center;
+    font-weight:bold;
+}
+
+/* Popup Overlay */
+.popup-overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:1000;
+}
+
+.popup-box{
+    background:white;
+    padding:35px 30px;
+    border-radius:15px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.3);
+    text-align:center;
+    max-width:320px;
+    width:90%;
+    animation:popIn 0.4s ease;
+}
+
+@keyframes popIn{
+    from{ transform:scale(0.7); opacity:0; }
+    to{ transform:scale(1); opacity:1; }
+}
+
+.popup-box h3{
+    color:#2a5298;
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.popup-box p{
+    color:#555;
+    font-size:15px;
+    margin-bottom:20px;
+    line-height:1.5;
+}
+
+.popup-close{
+    width:auto;
+    padding:10px 30px;
+    background:#2a5298;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:15px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.popup-close:hover{
+    background:#1e3c72;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Welcome Popup -->
+<div class="popup-overlay" id="welcomePopup">
+    <div class="popup-box">
+        <h3>👋 Welcome!</h3>
+        <p>Hello! Welcome to our platform.<br>Please log in to continue.</p>
+        <button class="popup-close" onclick="closePopup()">Get Started</button>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="logo">
+        <!-- Replace logo.png with your logo -->
+        <img src="logo.png" alt="Logo">
+    </div>
+
+    <h2>Login</h2>
+
+    <form id="loginForm">
+        <div class="input-box">
+            <input type="text" id="username" placeholder="Username" required>
+        </div>
+
+        <div class="input-box password-container">
+            <input type="password" id="password" placeholder="Password" required>
+            <span class="toggle-password" onclick="togglePassword()">👁</span>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <div class="message" id="message"></div>
+    </form>
+
+</div>
+
+<script>
+// Show popup on page load, close on button click
+function closePopup(){
+    document.getElementById("welcomePopup").style.display = "none";
+}
+
+function togglePassword() {
+    const password = document.getElementById("password");
+
+    if(password.type === "password"){
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let message = document.getElementById("message");
+
+    // Demo credentials
+    if(username === "admin" && password === "admin123"){
+        message.style.color = "green";
+        message.innerHTML = "Login Successful!";
+        
+        setTimeout(() => {
+            window.location.href = "search.html";
+        }, 1500);
+
+    } else {
+        message.style.color = "red";
+        message.innerHTML = "Invalid Username or Password";
+    }
+});
+</script>
+
+</body>
+</html>
