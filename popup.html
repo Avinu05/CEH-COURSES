@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+}
+
+.container{
+    width:350px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.logo img{
+    width:100px;
+    height:100px;
+    object-fit:contain;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+}
+
+.input-box{
+    margin-bottom:15px;
+}
+
+.input-box input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    outline:none;
+}
+
+.input-box input:focus{
+    border-color:#2a5298;
+}
+
+.password-container{
+    position:relative;
+}
+
+.toggle-password{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+    cursor:pointer;
+    color:#555;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:8px;
+    background:#2a5298;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#1e3c72;
+}
+
+.message{
+    margin-top:15px;
+    text-align:center;
+    font-weight:bold;
+}
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:black;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.popup-content{
+    color:red;
+    font-size:32px;
+    font-weight:bold;
+    text-transform:uppercase;
+    border:2px solid red;
+    padding:20px 40px;
+    border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <!-- Replace logo.png with your logo -->
+        <img src="logo.png" alt="Logo">
+    </div>
+
+    <h2>Login</h2>
+
+    <form id="loginForm">
+        <div class="input-box">
+            <input type="text" id="username" placeholder="Username" required>
+        </div>
+
+        <div class="input-box password-container">
+            <input type="password" id="password" placeholder="Password" required>
+            <span class="toggle-password" onclick="togglePassword()">👁</span>
+        </div>
+
+        <button type="submit">Login</button>
+
+        <div class="message" id="message"></div>
+<!-- Popup -->
+<div id="popup" class="popup">
+    <div class="popup-content">
+        LOGIN SUCCESSFUL
+    </div>
+</div>
+    </form>
+
+</div>
+
+<script>
+function togglePassword() {
+    const password = document.getElementById("password");
+
+    if(password.type === "password"){
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+
+document.getElementById("loginForm").addEventListener("submit", function(e){
+    e.preventDefault();
+
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let message = document.getElementById("message");
+
+    // Demo credentials
+    if(username === "admin" && password === "admin123"){
+        message.style.color = "green";
+        message.innerHTML = "Login Successful!";
+        
+        setTimeout(() => {
+            window.location.href = "search.html";
+        }, 1500);
+
+    } else {
+        message.style.color = "red";
+        message.innerHTML = "Invalid Username or Password";
+    }
+if(username === "admin" && password === "admin123"){
+
+    document.getElementById("popup").style.display = "flex";
+
+    setTimeout(() => {
+        window.location.href = "search.html";
+    }, 2000);
+
+} else {
+    message.style.color = "red";
+    message.innerHTML = "Invalid Username or Password";
+}
+});
+</script>
+
+</body>
+</html>
