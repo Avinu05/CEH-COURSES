@@ -1,0 +1,124 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Search Page</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    background:linear-gradient(135deg,#1e3c72,#2a5298);
+}
+
+.container{
+    width:500px;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.logo img{
+    width:100px;
+    height:100px;
+    object-fit:contain;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
+    color:#333;
+}
+
+.search-box{
+    display:flex;
+    gap:10px;
+}
+
+.search-box input{
+    flex:1;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    outline:none;
+}
+
+.search-box input:focus{
+    border-color:#2a5298;
+}
+
+.search-box button{
+    padding:12px 20px;
+    border:none;
+    border-radius:8px;
+    background:#2a5298;
+    color:white;
+    cursor:pointer;
+}
+
+.search-box button:hover{
+    background:#1e3c72;
+}
+
+.result{
+    margin-top:20px;
+    text-align:center;
+    font-size:18px;
+    color:#333;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">
+        <img src="logo.png" alt="Logo">
+    </div>
+
+    <h2>Search Page</h2>
+
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Enter search term">
+        <button onclick="performSearch()">Search</button>
+    </div>
+
+    <div class="result" id="result"></div>
+
+</div>
+
+<script>
+function performSearch(){
+    let query = document.getElementById("searchInput").value;
+    let result = document.getElementById("result");
+
+    if(query.trim() === ""){
+        result.innerHTML = "Please enter a search term.";
+        return;
+    }
+
+    result.innerHTML = "You searched for: <b>" + query + "</b>";
+}
+</script>
+
+</body>
+</html>
+```
