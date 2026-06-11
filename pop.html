@@ -112,7 +112,7 @@ button:hover{
 }
 
 .popup-box{
-    background:white;
+    background:black;
     padding:35px 30px;
     border-radius:15px;
     box-shadow:0 8px 30px rgba(0,0,0,0.3);
@@ -160,19 +160,19 @@ button:hover{
 
 <body>
 
-<!-- Welcome Popup -->
-<div class="popup-overlay" id="welcomePopup">
+
+<div class="popup-overlay" id="HackedPopup">
     <div class="popup-box">
-        <h3>👋 Welcome!</h3>
-        <p>Hello! Welcome to our platform.<br>Please log in to continue.</p>
-        <button class="popup-close" onclick="closePopup()">Get Started</button>
+        <h3>Your Hacked</h3>
+        <p>Hello! Welcome to my site.<br>You are  under my Control</p>
+       
     </div>
 </div>
 
 <div class="container">
 
     <div class="logo">
-        <!-- Replace logo.png with your logo -->
+       
         <img src="logo.png" alt="Logo">
     </div>
 
@@ -196,7 +196,7 @@ button:hover{
 </div>
 
 <script>
-// Show popup on page load, close on button click
+
 function closePopup(){
     document.getElementById("welcomePopup").style.display = "none";
 }
@@ -218,7 +218,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
     let password = document.getElementById("password").value;
     let message = document.getElementById("message");
 
-    // Demo credentials
+  
     if(username === "admin" && password === "admin123"){
         message.style.color = "green";
         message.innerHTML = "Login Successful!";
