@@ -102,8 +102,8 @@ button:hover{
     position:fixed;
     top:0;
     left:0;
-    width:200%;
-    height:200%;
+    width:100%;
+    height:100%;
     background:rgba(0,0,0,0.5);
     display:flex;
     justify-content:center;
@@ -112,7 +112,7 @@ button:hover{
 }
 
 .popup-box{
-    background:black;
+    background:white;
     padding:35px 30px;
     border-radius:15px;
     box-shadow:0 8px 30px rgba(0,0,0,0.3);
@@ -129,7 +129,7 @@ button:hover{
 
 .popup-box h3{
     color:#2a5298;
-    font-size:12px;
+    font-size:22px;
     margin-bottom:10px;
 }
 
@@ -144,10 +144,10 @@ button:hover{
     width:auto;
     padding:10px 30px;
     background:#2a5298;
-    color:gold;
+    color:white;
     border:none;
-    border-radius:9px;
-    font-size:24px;
+    border-radius:8px;
+    font-size:15px;
     cursor:pointer;
     transition:0.3s;
 }
@@ -160,19 +160,18 @@ button:hover{
 
 <body>
 
-
-<div class="popup-overlay" id="HackedPopup">
+<div class="popup-overlay" id="welcomePopup">
     <div class="popup-box">
-        <h3>Your Hacked</h3>
-        <p>Hello! Welcome to my site.<br>You are  under my Control</p>
-       
+        <h3>👋 Welcome!</h3>
+        <p>Hello! Welcome to our platform.<br>Please log in to continue.</p>
+        <button class="popup-close" onclick="closePopup()">Get Started</button>
     </div>
 </div>
 
 <div class="container">
 
     <div class="logo">
-       
+      
         <img src="logo.png" alt="Logo">
     </div>
 
@@ -211,7 +210,6 @@ function togglePassword() {
     }
 }
 
-
 document.getElementById("loginForm").addEventListener("submit", function(e){
     e.preventDefault();
 
@@ -219,7 +217,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
     let password = document.getElementById("password").value;
     let message = document.getElementById("message");
 
-  
+
     if(username === "admin" && password === "admin123"){
         message.style.color = "green";
         message.innerHTML = "Login Successful!";
